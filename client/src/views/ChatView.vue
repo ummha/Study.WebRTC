@@ -1,6 +1,8 @@
 <template>
   <div class="about">
-    <h1>This is an about page</h1>
+    <h1>This is an chat page</h1>
+
+    <VideoChat></VideoChat>
   </div>
 </template>
 
@@ -13,3 +15,7 @@
   }
 }
 </style>
+<script setup>
+import VideoChat from "@/components/VideoChat.vue";
+
+</script>
