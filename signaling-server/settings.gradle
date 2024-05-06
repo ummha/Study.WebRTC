@@ -1,1 +1,4 @@
 rootProject.name = 'signaling-server'
+
+include 'web-webrtc'
+include 'webflux-webrtc'
