@@ -71,7 +71,9 @@ const startWebSocket = async () => {
 }
 
 const startCam = async () => {
-  localStream.value = await navigator.mediaDevices.getUserMedia({video: true, audio: true});
+  // localStream.value = await navigator.mediaDevices.getUserMedia({video: true, audio: true});
+  localStream.value = await navigator.mediaDevices.getDisplayMedia({video: true, audio: false});
+  console.log("localStream", localStream.value);
   localVideo.value.srcObject = localStream.value;
 }
 
@@ -204,17 +206,23 @@ onMounted(async () => {
 </script>
 
 <template>
+  <div>KEY: {{ myKey }}, room: {{ roomId }}</div>
+  <div>{{ pcListMap }}</div>
   <div>
     <video ref="localVideo" autoplay muted></video>
     <video ref="remoteVideo" autoplay></video>
-    <button @click="startStream">Start Stream</button>
+    <button class="btn-stream" @click="startStream">Start Stream</button>
   </div>
 </template>
 
 <style scoped>
 video {
   width: 100%;
-  max-width: 450px;
+  max-width: 400px;
+  margin-right: 10px;
   border: 1px solid black;
+}
+button.btn-stream {
+  display: block;
 }
 </style>
